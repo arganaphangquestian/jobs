@@ -1,0 +1,20 @@
+version: '3'
+services:
+  app_server:
+    build:
+      context: ./src
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./src:/source
+    depends_on:
+      - app_db
+  app_db:
+    build:
+      context: .
+      dockerfile: ./db.dockerfile
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: databasedb
+      POSTGRES_USER: database
+      POSTGRES_PASSWORD: database1!
