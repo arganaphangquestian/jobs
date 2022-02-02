@@ -4,6 +4,8 @@ services:
     build:
       context: ./src
       dockerfile: ./Dockerfile
+    ports:
+      - 80:80
     volumes:
       - ./src:/source
     depends_on:
